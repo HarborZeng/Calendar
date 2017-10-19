@@ -1,0 +1,117 @@
+.calendar-container {
+    margin: 70px auto 0 auto;
+    text-align: center;
+    /*禁止用户选择文本*/
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    /*默认光标*/
+    cursor: default;
+}
+
+.calendar-head {
+    margin: 70px auto auto auto;
+    text-align: center;
+    height: 150px;
+    width: 651px;
+    background: lightseagreen;
+}
+
+.calendar-body {
+    margin: 0 auto;
+    height: 150px;
+    width: 651px;
+}
+
+.calendar-arrow {
+    color: #F5F6F6;
+    font-size: 20px;
+}
+
+.calendar-arrow:hover {
+    color: #5a5b5b;
+    font-size: 20px;
+}
+
+.calendar-month_year {
+    color: #F5F6F6;
+    font-size: 20px;
+    float: left;
+    width: 80%;
+    height: 100%;
+}
+
+.calendar-month_year p {
+    line-height: 30%;
+    letter-spacing: 4px;
+}
+
+.calendar-display {
+    padding-top: 46px;
+}
+
+.calendar-arrow-right {
+    float: left;
+    width: 10%;
+    line-height: 150px;
+}
+
+.calendar-arrow-left {
+    float: left;
+    width: 10%;
+    line-height: 150px;
+}
+
+.calendar-day_of_week-container {
+    background-color: #E3E3E2;
+    height: 30px;
+}
+
+.calendar-day_of_week-container ul {
+    margin: 0;
+    padding: 0;
+}
+
+.calendar-day_of_week-container li {
+    float: left;
+    width: 93px;
+    height: 30px;
+    list-style: none;
+    padding-top: 4px;
+    color: #444;
+
+}
+
+.calendar-days-container {
+    background-color: #F3F3F2;
+    height: 130px;
+}
+
+.calendar-days-container ul {
+    margin: 0;
+    padding: 0;
+}
+
+.calendar-days-container li {
+    float: left;
+    width: 93px;
+    height: 24px;
+    line-height: 24px;
+    list-style: none;
+    font-size: 12px;
+    color: #666;
+}
+
+.calendar-days-container a{
+    padding: 6% 20%;
+}
+
+.calendar-days-container a:hover {
+    color: #F3F3F2;
+    background-color: #7fb2ab;
+}
+.calendar-days-container a:active {
+    color: #F3F3F2;
+    background-color: lightseagreen;
+}
