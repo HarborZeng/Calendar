@@ -15,7 +15,7 @@
     text-align: center;
     height: 150px;
     width: 651px;
-    background: lightseagreen;
+    background: #00c1ac;
 }
 
 .calendar-body {
@@ -85,7 +85,7 @@
 
 .calendar-days-container {
     background-color: #F3F3F2;
-    height: 130px;
+    height: 150px;
 }
 
 .calendar-days-container ul {
@@ -109,9 +109,9 @@
 
 .calendar-days-container a:hover {
     color: #F3F3F2;
-    background-color: #7fb2ab;
+    background-color: #41b26d;
 }
 .calendar-days-container a:active {
     color: #F3F3F2;
-    background-color: lightseagreen;
+    background-color: #41b26d;
 }
