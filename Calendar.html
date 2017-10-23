@@ -44,13 +44,22 @@
     </div>
 </div>
 <script>
+    //全局变量now，在日历翻页的时候会被修改
     var now = new Date();
 
+    /**
+     * 初始化函数，在js最后一行进行调用
+     * 用来统一开始一个函数集合
+     */
     function init() {
         drawBody(now);
         setUpHeader(now.getFullYear(), now.getMonth());
     }
 
+    /**
+     * 两个calendar-arrow的onclick事件
+     * @param direction 1代表下一月，0代表上一月
+     */
     function changeCalendarBody(direction) {
         console.log('点击了' + direction);
         if (direction === 0) {
@@ -75,6 +84,10 @@
         setUpHeader(now.getFullYear(), now.getMonth());
     }
 
+    /**
+     * 绘制传入对象代表的月份的日历body数据
+     * @param now 传入的date对象
+     */
     function drawBody(now) {
         var counter = 0;
         var date = now.getDate();
@@ -102,7 +115,7 @@
             var listItem = document.createElement('li');
             var a = document.createElement('a');
             a.innerText = d;
-            if (d === now.getDate()){
+            if (d === now.getDate()) {
                 a.setAttribute('id', 'today-list-item')
             }
             listItem.appendChild(a);
@@ -124,6 +137,11 @@
         setUpToday();
     }
 
+    /**
+     * 判断当前完整年份是否闰年
+     * @param fullYear 完整年份
+     * @return number 是闰年返回1 否则返回0
+     */
     function isLeapYear(fullYear) {
         if (fullYear % 100 !== 0) {
             return fullYear % 4 === 0 ? 1 : 0;
@@ -132,6 +150,10 @@
         }
     }
 
+    /**
+     * 返回上个月的天数
+     * @param now 包含至少fullYear和month信息的Date对象
+     */
     function numberOfDaysInLastMonth(now) {
         var copy = new Date(now);
         if (copy.getMonth() === 0) {
@@ -159,7 +181,7 @@
         var today = new Date();
         if (today.getMonth() === now.getMonth()) {
             var todayId = document.getElementById('today-list-item');
-            todayId.style.backgroundColor='#00c1ac'
+            todayId.style.backgroundColor = '#00c1ac'
         }
         //var year = now.getYear();   //从1900年开始算起
 //        var month = now.getMonth(); //从0月开始算起
@@ -167,7 +189,11 @@
 //        var day = now.getDay();     //星期几,从0开始
     }
 
-
+    /**
+     * 填充日历的头部，月份年份等信息
+     * @param fullYear 完整的年份
+     * @param month 完整的月份，从0开始
+     */
     function setUpHeader(fullYear, month) {
         var yearHeader = document.getElementById('year');
         yearHeader.innerText = fullYear;
