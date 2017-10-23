@@ -103,15 +103,11 @@
     color: #666;
 }
 
-.calendar-days-container a{
+.calendar-days-container a {
     padding: 6% 20%;
 }
 
 .calendar-days-container a:hover {
     color: #F3F3F2;
-    background-color: #41b26d;
-}
-.calendar-days-container a:active {
-    color: #F3F3F2;
-    background-color: #41b26d;
+    background-color: #f16017;
 }

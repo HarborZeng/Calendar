@@ -102,6 +102,9 @@
             var listItem = document.createElement('li');
             var a = document.createElement('a');
             a.innerText = d;
+            if (d === now.getDate()){
+                a.setAttribute('id', 'today-list-item')
+            }
             listItem.appendChild(a);
             daysList.appendChild(listItem);
             counter++;
@@ -117,6 +120,8 @@
                 daysList.appendChild(listItem);
             }
         }
+
+        setUpToday();
     }
 
     function isLeapYear(fullYear) {
@@ -142,18 +147,26 @@
      * 返回这个月的天数
      */
     function numberOfDaysInMonth(copy) {
-        var daysInMonths = [31, 28 + isLeapYear(copy.getFullYear()), 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+        var daysInMonths = [31, 28 + isLeapYear(copy.getFullYear()),
+            31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
         return daysInMonths[copy.getMonth()];
     }
 
-    /*    function setUpToday() {
-            //var year = now.getYear();   //从1900年开始算起
-            var month = now.getMonth(); //从0月开始算起
-            var date = now.getDate();   //例如10月22日的22日
-            var day = now.getDay();     //星期几,从0开始
+    /**
+     * 此方法将当前日期着色为墨绿色
+     */
+    function setUpToday() {
+        var today = new Date();
+        if (today.getMonth() === now.getMonth()) {
+            var todayId = document.getElementById('today-list-item');
+            todayId.style.backgroundColor='#00c1ac'
+        }
+        //var year = now.getYear();   //从1900年开始算起
+//        var month = now.getMonth(); //从0月开始算起
+//        var date = now.getDate();   //例如10月22日的22日
+//        var day = now.getDay();     //星期几,从0开始
+    }
 
-
-        }*/
 
     function setUpHeader(fullYear, month) {
         var yearHeader = document.getElementById('year');
