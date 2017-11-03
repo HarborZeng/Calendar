@@ -107,7 +107,7 @@
     padding: 6% 20%;
 }
 
-.calendar-days-container a:hover {
+.calendar-days-container li:hover {
     color: #F3F3F2;
     background-color: #f16017;
 }

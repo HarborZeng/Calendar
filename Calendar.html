@@ -100,11 +100,9 @@
         //打印上个月剩下的几天
         for (var i = daysBelongToLastMonth; i > 0; i--) {
             var listItem = document.createElement('li');
-            var a = document.createElement('a');
             //+1的原因：25-30总共6天，但30-25=6
-            a.innerText = totalDays - i + 1;
-            a.style.color = '#BBB';
-            listItem.appendChild(a);
+            listItem.innerText = totalDays - i + 1;
+            listItem.style.color = '#BBB';
             daysList.appendChild(listItem);
             counter++;
         }
@@ -113,12 +111,10 @@
         var numberOfDaysThisMonth = numberOfDaysInMonth(now);
         for (var d = 1; d <= numberOfDaysThisMonth; d++) {
             var listItem = document.createElement('li');
-            var a = document.createElement('a');
-            a.innerText = d;
+            listItem.innerText = d;
             if (d === now.getDate()) {
-                a.setAttribute('id', 'today-list-item')
+                listItem.setAttribute('id', 'today-list-item')
             }
-            listItem.appendChild(a);
             daysList.appendChild(listItem);
             counter++;
         }
@@ -126,10 +122,8 @@
         if (counter % 7 !== 0) {
             for (var j = 1; j <= 7 - (counter % 7); j++) {
                 var listItem = document.createElement('li');
-                var a = document.createElement('a');
-                a.innerText = j;
-                a.style.color = '#BBB';
-                listItem.appendChild(a);
+                listItem.innerText = j;
+                listItem.style.color = '#BBB';
                 daysList.appendChild(listItem);
             }
         }
@@ -179,7 +173,7 @@
      */
     function setUpToday() {
         var today = new Date();
-        if (today.getMonth() === now.getMonth()) {
+        if (today.getMonth() === now.getMonth() && today.getFullYear() === now.getFullYear()) {
             var todayId = document.getElementById('today-list-item');
             todayId.style.backgroundColor = '#00c1ac'
         }
