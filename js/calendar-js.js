@@ -80,7 +80,9 @@ function drawBody(now) {
             }
         }
         //over-只能选择大于今天的日子
-        if (d === now.getDate()) {
+        if (d === now.getDate() &&
+            now.getFullYear() === new Date().getFullYear() &&
+            now.getMonth() === new Date().getMonth()) {
             listItem.setAttribute('id', 'today-list-item');
         }
         daysList.appendChild(listItem);
@@ -141,7 +143,8 @@ function numberOfDaysInMonth(copy) {
  */
 function setUpToday() {
     var today = new Date();
-    if (today.getMonth() === now.getMonth() && today.getFullYear() === now.getFullYear()) {
+    if (today.getMonth() === now.getMonth() &&
+        today.getFullYear() === now.getFullYear()) {
         var todayId = document.getElementById('today-list-item');
         todayId.style.backgroundColor = '#00c1ac'
     }
