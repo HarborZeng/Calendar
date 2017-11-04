@@ -107,7 +107,8 @@
     padding: 6% 20%;
 }
 
+/*使用!important解决了js控制dom改变color覆盖css的hover的问题*/
 .calendar-days-container li:hover {
-    color: #F3F3F2;
-    background-color: #f16017;
+    color: #F3F3F2 !important;
+    background: #f16017 !important;
 }

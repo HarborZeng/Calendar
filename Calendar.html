@@ -61,7 +61,7 @@
      * @param direction 1代表下一月，0代表上一月
      */
     function changeCalendarBody(direction) {
-        console.log('点击了' + direction);
+//        console.log('点击了' + direction);
         if (direction === 0) {
             if (now.getMonth() === 0) {
                 now.setMonth(11);
@@ -112,8 +112,22 @@
         for (var d = 1; d <= numberOfDaysThisMonth; d++) {
             var listItem = document.createElement('li');
             listItem.innerText = d;
+            //begin-只能选择大于今天的日子
+            if (now.getFullYear() > new Date().getFullYear()) {
+                listItem.setAttribute('onclick', 'select()');
+                listItem.setAttribute('id', 'day-' + d);
+            } else if (now.getFullYear() === new Date().getFullYear()) {
+                if (now.getMonth() === new Date().getMonth() && d > now.getDate()) {
+                    listItem.setAttribute('onclick', 'select()');
+                    listItem.setAttribute('id', 'day-' + d);
+                } else if (now.getMonth() > new Date().getMonth()) {
+                    listItem.setAttribute('onclick', 'select()');
+                    listItem.setAttribute('id', 'day-' + d);
+                }
+            }
+            //over-只能选择大于今天的日子
             if (d === now.getDate()) {
-                listItem.setAttribute('id', 'today-list-item')
+                listItem.setAttribute('id', 'today-list-item');
             }
             daysList.appendChild(listItem);
             counter++;
@@ -196,6 +210,24 @@
             'JULY', 'AUGUST', 'SEPTEMBER', 'OCTOBER', 'NOVEMBER', 'DECEMBER'];
         var monthHeader = document.getElementById('month');
         monthHeader.innerText = monthNames[month];
+    }
+
+    var lastSelectedDayId;
+
+    /**
+     * select方法是在动态生成的li里面被点击才调用，
+     * 主要作用是用户点击某一日期时，更换着色点
+     */
+    function select() {
+        try {
+            var lastSelected = document.getElementById(lastSelectedDayId);
+            lastSelected.style.background = '#f3f3f2';
+        } catch (Error) {
+        }
+        var id = 'day-' + event.target.innerHTML;
+        var selectedDay = document.getElementById(id);
+        lastSelectedDayId = id;
+        selectedDay.style.background = '#00c1ac';
     }
 
 
