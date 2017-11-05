@@ -71,7 +71,7 @@ function drawBody(now) {
             listItem.setAttribute('onclick', 'select()');
             listItem.setAttribute('id', 'day-' + d);
         } else if (now.getFullYear() === new Date().getFullYear()) {
-            if (now.getMonth() === new Date().getMonth() && d > now.getDate()) {
+            if (now.getMonth() === new Date().getMonth() && d >= now.getDate()) {
                 listItem.setAttribute('onclick', 'select()');
                 listItem.setAttribute('id', 'day-' + d);
             } else if (now.getMonth() > new Date().getMonth()) {
@@ -146,12 +146,8 @@ function setUpToday() {
     if (today.getMonth() === now.getMonth() &&
         today.getFullYear() === now.getFullYear()) {
         var todayId = document.getElementById('today-list-item');
-        todayId.style.backgroundColor = '#00c1ac'
+        todayId.style.background = '#00c1ac'
     }
-    //var year = now.getYear();   //从1900年开始算起
-//        var month = now.getMonth(); //从0月开始算起
-//        var date = now.getDate();   //例如10月22日的22日
-//        var day = now.getDay();     //星期几,从0开始
 }
 
 /**
@@ -176,16 +172,28 @@ var lastSelectedDayId;
  * 主要作用是用户点击某一日期时，更换着色点
  */
 function select() {
-    try {
-        var lastSelected = document.getElementById(lastSelectedDayId);
-        lastSelected.style.background = '#f3f3f2';
-    } catch (Error) {
-    }
+    discolorPresent();
+    discolorLastSelection();
     var id = 'day-' + event.target.innerHTML;
     var selectedDay = document.getElementById(id);
     lastSelectedDayId = id;
     selectedDay.style.background = '#00c1ac';
 }
 
+function discolorPresent() {
+    try {
+        var todayId = document.getElementById('today-list-item');
+        todayId.style.backgroundColor = '#f3f3f2'
+    } catch (Error) {
+    }
+}
+
+function discolorLastSelection() {
+    try {
+        var lastSelected = document.getElementById(lastSelectedDayId);
+        lastSelected.style.background = '#f3f3f2';
+    } catch (Error) {
+    }
+}
 
 init();
