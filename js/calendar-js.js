@@ -83,7 +83,7 @@ function drawBody(now) {
         if (d === now.getDate() &&
             now.getFullYear() === new Date().getFullYear() &&
             now.getMonth() === new Date().getMonth()) {
-            listItem.setAttribute('id', 'today-list-item');
+            listItem.setAttribute('class', 'today-list-item');
         }
         daysList.appendChild(listItem);
         counter++;
@@ -145,8 +145,8 @@ function setUpToday() {
     var today = new Date();
     if (today.getMonth() === now.getMonth() &&
         today.getFullYear() === now.getFullYear()) {
-        var todayId = document.getElementById('today-list-item');
-        todayId.style.background = '#00c1ac'
+        var todayId = document.getElementsByClassName('today-list-item');
+        todayId[0].style.background = '#00c1ac'
     }
 }
 
@@ -177,18 +177,13 @@ function select() {
     var id = 'day-' + event.target.innerHTML;
     var selectedDay = document.getElementById(id);
     lastSelectedDayId = id;
-    try {
-        selectedDay.style.background = '#00c1ac';
-    } catch (TypeError) {
-        var todayId = document.getElementById('today-list-item');
-        todayId.style.background = '#00c1ac'
-    }
+    selectedDay.style.background = '#00c1ac';
 }
 
 function discolorPresent() {
     try {
-        var todayId = document.getElementById('today-list-item');
-        todayId.style.backgroundColor = '#f3f3f2'
+        var todayId = document.getElementsByClassName('today-list-item');
+        todayId[0].style.backgroundColor = '#f3f3f2'
     } catch (Error) {
     }
 }
