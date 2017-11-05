@@ -56,7 +56,7 @@ function drawBody(now) {
         var listItem = document.createElement('li');
         //+1的原因：25-30总共6天，但30-25=6
         listItem.innerText = totalDays - i + 1;
-        listItem.style.color = '#BBB';
+        listItem.style.color = '#bbb';
         daysList.appendChild(listItem);
         counter++;
     }
@@ -177,7 +177,12 @@ function select() {
     var id = 'day-' + event.target.innerHTML;
     var selectedDay = document.getElementById(id);
     lastSelectedDayId = id;
-    selectedDay.style.background = '#00c1ac';
+    try {
+        selectedDay.style.background = '#00c1ac';
+    } catch (TypeError) {
+        var todayId = document.getElementById('today-list-item');
+        todayId.style.background = '#00c1ac'
+    }
 }
 
 function discolorPresent() {
